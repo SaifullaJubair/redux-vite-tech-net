@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./redux/store";
-import { decrement, increment } from "./redux/features/counter/counterSlice";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+} from "./redux/features/counter/counterSlice";
 
 function App() {
   const { count } = useSelector((state: RootState) => state.counter);
@@ -8,7 +12,7 @@ function App() {
 
   return (
     <>
-      <div className="">
+      <div className="flex m-16">
         <div className="">
           <label htmlFor="Quantity" className="sr-only">
             {" "}
@@ -34,6 +38,16 @@ function App() {
               +
             </button>
           </div>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            className="h-10 leading-10 text-gray-600 transition border border-2-gray-500 hover:opacity-75 mx-4 px-2"
+            onClick={() => dispatch(incrementByAmount(5))}
+          >
+            IncrementByAmount
+          </button>
         </div>
       </div>
     </>
